@@ -79,7 +79,7 @@ public final class ForgeEventHandler {
 								tickContainer(blockEntity, container, blockPos, container.getContainerSize(), Container::getItem, Container::setItem);
 							} else {
 								blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(itemHandler -> {
-									if(itemHandler instanceof IItemHandlerModifiable itemHandlerModifiable) {
+									if(!FIAHICommonConfig.STABLE_TEMPERATURE_CONTAINERS.get().contains(beId.toString()) && itemHandler instanceof IItemHandlerModifiable itemHandlerModifiable) {
 										tickContainer(blockEntity, itemHandlerModifiable, blockPos, itemHandlerModifiable.getSlots(), IItemHandlerModifiable::getStackInSlot, IItemHandlerModifiable::setStackInSlot);
 									}
 								});
